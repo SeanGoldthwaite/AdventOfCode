@@ -4,15 +4,16 @@ def main():
     # print("112233", check_password_two(112233))
     # print("123444", check_password_two(123444))
     # print("111122", check_password_two(111122))
-    #print("255565", check_password_two(255565))
+    # print("255566", check_password_two(255566))
+    # print("255577", check_password_two(255577))
     for i in range(245318, 765747):
-        # if check_password_one(i):
-        #     passwords_part_one.append(i)
+        if check_password_one(i):
+            passwords_part_one.append(i)
         if check_password_two(i):
             passwords_part_two.append(i)
         print(i)
-    print(passwords_part_one)
-    print(passwords_part_two)
+    print(len(passwords_part_one), passwords_part_one)
+    print(len(passwords_part_two), passwords_part_two)
 
 
 def check_password_one(password):
@@ -27,6 +28,7 @@ def check_password_one(password):
     print("done 1")
     return repeat
 
+#DOESN'T WORK
 def check_password_two(password):
     list = [int(x) for x in str(password)]
     repeat = False
@@ -37,21 +39,24 @@ def check_password_two(password):
             return False
         if list[i] is list[i - 1]:
             repeats.append(i - 1)
-    #print(password)
+    print(password)
     i = 0
     while i < len(repeats) - 1:
         print(repeats)
-        #print(i)
+        print(i)
         if repeats[i] is repeats[i + 1] - 1:
             j = i + 1
             while j < len(repeats) - 1:
+                print(j)
                 if repeats[j] is repeats[j + 1] - 1:
                     j += 1
+                else:
+                    break
             print("removing from ", i, j)
             del repeats[i:j + 1]
         i += 1
-    #print(repeats)
-    #print(len(repeats))
+    print(repeats)
+    print(len(repeats))
     print("done 2")
     return len(repeats) > 0
 
